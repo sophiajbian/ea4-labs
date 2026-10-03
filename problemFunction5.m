@@ -12,27 +12,9 @@ one for Eq. (5) and one for Eq. (6).)
 %EQ 5/ SIS
 % di/dt = bi(1 - a/b - i)
 
-syms a b i(t) r(t) % b is beta
-eqn5 = diff(i(t), t) == b*i(1 - a/b - i)
-iSol(t) = dsolve(eqn5)
+
+function yp = rhs_sis(t, y, alpha, beta)
+    yp = beta * y * (1 - alpha/beta - y);
+end
 
 
-function equation5()
-
-%EQ 6/ SIR
-% dr/dt = a( 1 - r - s*exp(R*r))
-% solve for r
-
-%define function
-syms r(t), a, R, s
-eqn6 = diff(r, t) == a*(1-r-s*exp(R*r))
-rSol(t) = dsolve(eqn6)
-
-
-
-
-
-
-
-syms y(t)
-ode diff(y, t) == 
